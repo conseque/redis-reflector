@@ -1,0 +1,14 @@
+makes one redis-server slave of two master redis-servers
+
+requires perl, socat
+
+creates three socats: one for the slave and two others for the masters
+
+when slave runs 'sync' it is sent to first master and reply sent back to slave
+
+after 15s (enough to become slave of first master) 'sync' is sent to second master, replies ignored
+
+data sent back and forth are printed but is mostly unreadable
+
+it is possible to send second master's AOF to client to overwrite first master's data, in case AOF is available
+
